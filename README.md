@@ -10,6 +10,9 @@ Those in bold have already been implemented:
     * **Different beeps for different prayers, for the blind (improve differentiation)**
     * Vibration and **LED for the deaf orants** (use RGB LED)
     * Input for quadraplegics
+  * Scrolling prayer text
+  * Prayer counter (x/10, y/5) or x, y
+    * Due to space limitations, requires implementing scrolling text first  
   * Rosary Mysteries
     * Calendar-based
     * Menu at start, with 4 options, and each button press corresponding to a movement
@@ -17,12 +20,8 @@ Those in bold have already been implemented:
     * Starting prayer
     * Final prayer
   * Translations
-  * Debounce inputs with this: https://www.arduino.cc/en/tutorial/switch
   * Multiple chaplets, with support for generic format
   * Rotary encoder, with "Amen" button
-  * Scrolling prayer text
-  * Prayer counter (x/10, y/5) or x, y
-    * Due to space limitations, requires implementing scrolling text first
   * Ending prayers
   * Power switch
   * Verses
