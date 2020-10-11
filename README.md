@@ -4,6 +4,11 @@ A simple Arduino device to pray chaplets digitally
 # Features
 Those in bold have already been implemented:
   * **Rosary prayers**
+  * **FOSS/H project**
+  * **Accessibility**
+    * **Different beeps for different prayers, for the blind (improve differentiation)**
+    * Vibration and LED for the deaf orants
+    * Input for quadraplegics
   * Rosary Mysteries
     * Calendar-based
     * Menu at start, with 4 options, and each button press corresponding to a movement
@@ -11,11 +16,6 @@ Those in bold have already been implemented:
     * Starting prayer
     * Final prayer
   * Translations
-  * Accessibility
-    * Vibration and LED for the deaf orants
-    * Different beeps for different prayers, for the blind
-    * Input for quadraplegics
-  * **FOSS/H project**
   * Debounce inputs with this: https://www.arduino.cc/en/tutorial/switch
   * Multiple chaplets, with support for generic format
   * Rotary encoder, with "Amen" button
