@@ -20,10 +20,12 @@ Those in bold have already been implemented:
     * Starting prayer
     * Final prayer
   * Translations
-  * Multiple chaplets, with support for generic format
+  * Multiple chaplets
+    * Chaplet of Divine Mercy
+    * Support for a generic format
   * Rotary encoder, with "Amen" button
   * Ending prayers
-  * Power switch
+  * Power switch, automatic shut-off, and state preservation
   * Verses
 
 # Components
