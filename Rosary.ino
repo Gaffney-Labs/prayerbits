@@ -39,7 +39,7 @@ int buttonpin = 2;
 int secondbutton = 3;
 int buzzer = 4;
 int LED = 13;
-int pos = 0;
+int pos = 0; //keep in mind when counting beads
 
 int state = HIGH;      // the current state of the output
 int reading;           // the current reading from the input pin
@@ -62,7 +62,7 @@ __________________
 
 //redundant for rosary, since can determine prayer from pos and decade
 int chaplet[] = {0, 1, 2, 2, 2, 3,
-                 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4,
+                 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4, //last bead corresponds to pos=18
                  1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4,
                  1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4,
                  1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4,                  
@@ -73,6 +73,9 @@ String joyful[] = {"The Annunciation", "The Visitation", "The Nativity", "The Pr
 String glorious[] = {"The Resurrection", "The Ascension", "Pentecost", "The Assumption", "The Coronation"};
 String luminous[] = {"The Baptism", "Wedding at Cana", "The Kingdom", "Transfiguration", "The Eucharist"};
 String sorrowful[] = {"Agony", "Scourging", "Thorns", "Carrying Cross", "Crucifixion"};
+
+// Prayers
+String prayers[] = {"I believe...", "Our Father...", "Hail Mary...", "Glory Be...", "Oh my Jesus..."};
 
 // initialize the library with the numbers of the interface pins
 LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
@@ -131,21 +134,7 @@ Not necessarily most computationally efficient, though avoids rewriting. Might n
 */
 void loop() {
   
-  //Determine mystery and position
-  if (pos - 6 >= 0) {
-    int decade = ceil((pos-6)/13);
-    int bead = (pos - 6)%13; //results in Fatima prayer bead corresponding to value of 0
-  }
-  else {
-    int decade = 0;
-    int bead = pos;
-  }
-  
-  /*write prayer when button pressed*/
-  
-  // set the cursor to column 0, line 1
-  // (note: line 1 is the second row, since counting begins with 0):
-  lcd.setCursor(0, 1);
+
 
   String prayer;
   
@@ -166,30 +155,34 @@ void loop() {
   previous = reading;
   
   if (state == LOW) {
+      lcd.clear(); //Annoyingly clears screen; modify to only clear on transitions of mystery
+      /*write prayer when button pressed*/
+      
+      // set the cursor to column 0, line 1
+      // (note: line 1 is the second row, since counting begins with 0):
+      lcd.setCursor(0, 1);  
+      
       digitalWrite(LED, HIGH);
       beep(1, chaplet[pos]);
-      switch (chaplet[pos]) {
-        case 0:
-          prayer = "I believe...";
-          break;
-        case 2:
-          prayer = "Hail Mary...";
-          break;
-        case 1:
-          prayer = "Our Father...";
-          break;
-        case 3:
-          prayer = "Glory Be...";
-          break;
-        case 4:
-          prayer = "Oh my Jesus...";
-          break;              
-      }
-      lcd.print(prayer);
+      lcd.print(prayers[chaplet[pos]]);
       pos+=1;
       //delay(100); // to prevent multiple reads, replaced by debouncing
       digitalWrite(LED, LOW);
       state = HIGH;
+      
+              //Determine mystery and position
+      if (pos - 6 > 0) {
+        int decade = ceil((pos-7)/13);
+        int bead = (pos - 6)%13; //results in Fatima prayer bead corresponding to value of 0
+        lcd.setCursor(0,0);
+        lcd.print(joyful[decade]);
+      }
+      else {
+        int decade = 0;
+        int bead = pos;
+        lcd.setCursor(0,0);
+        lcd.print("Intro. Prayers");
+      }
   }
   
   if (pos >= sizeof(chaplet)) {
