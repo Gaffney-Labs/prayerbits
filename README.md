@@ -41,7 +41,9 @@ The project can be built with parts included in most Arduino starter kits.
 # Instructions
 You will need the LiquidCrystal Library.
 
-1. Assemble the components according to the attached schematic/photograph
+1. Assemble the components according to this breadboard diagram:
+<img src="./PrayerBits%20Breadboard_bb.png">
+
 2. Open the code in Arduino IDE
 3. Upload the code
 
@@ -49,5 +51,6 @@ You will need the LiquidCrystal Library.
 Simply, press the button to advance a prayer.
 
 # Troubleshooting
-A bizarre error can occur where gibberish is displayed, and uploading again resolves the issue.
+* A bizarre error can occur where gibberish is displayed, and uploading again (sometimes repeatedly) resolves the issue.
+* The included Fritzing file fails to route correctly in schematic view. 
 
