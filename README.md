@@ -13,9 +13,9 @@ Those in bold have already been implemented:
   * Translations
   * Accessibility
     * Vibration and LED for the deaf orants
+    * Different beeps for different prayers, for the blind
     * Input for quadraplegics
   * **FOSS/H project**
-  * Different beeps for different prayers
   * Debounce inputs with this: https://www.arduino.cc/en/tutorial/switch
   * Multiple chaplets, with support for generic format
   * Rotary encoder, with "Amen" button
