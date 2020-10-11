@@ -38,6 +38,7 @@ TODO:
 int buttonpin = 2;
 int secondbutton = 3;
 int buzzer = 4;
+int LED = 13;
 int pos = 0;
 
 /*
@@ -140,6 +141,7 @@ void loop() {
   
   
   if (digitalRead(buttonpin) == LOW) {
+      digitalWrite(LED, HIGH);
       beep(1, chaplet[pos]);
       switch (chaplet[pos]) {
         case 0:
@@ -160,7 +162,8 @@ void loop() {
       }
       lcd.print(prayer);
       pos+=1;
-      delay(50); // to prevent multiple reads
+      delay(100); // to prevent multiple reads
+      digitalWrite(LED, LOW);
   }
   
   if (pos >= sizeof(chaplet)) {
