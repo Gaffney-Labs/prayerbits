@@ -41,6 +41,17 @@ int buzzer = 4;
 int LED = 13;
 int pos = 0;
 
+int state = HIGH;      // the current state of the output
+int reading;           // the current reading from the input pin
+int previous = LOW;    // the previous reading from the input pin
+
+
+// the follow variables are long's because the time, measured in miliseconds,
+// will quickly become a bigger number than can be stored in an int.
+long time = 0;         // the last time the output pin was toggled
+long debounce = 200;   // the debounce time, increase if the output flickers
+
+
 /*
 Interface:
 __________________
@@ -49,6 +60,14 @@ __________________
 ------------------*
 */
 
+//redundant for rosary, since can determine prayer from pos and decade
+int chaplet[] = {0, 1, 2, 2, 2, 3,
+                 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4,
+                 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4,
+                 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4,
+                 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4,                  
+                 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4};
+  
 // Mysteries
 String joyful[] = {"The Annunciation", "The Visitation", "The Nativity", "The Presentation", "The Temple"};
 String glorious[] = {"The Resurrection", "The Ascension", "Pentecost", "The Assumption", "The Coronation"};
@@ -112,15 +131,6 @@ Not necessarily most computationally efficient, though avoids rewriting. Might n
 */
 void loop() {
   
-  //redundant for rosary, since can determine prayer from pos and decade
-  int chaplet[] = {0, 1, 2, 2, 2, 3,
-                   1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4,
-                   1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4,
-                   1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4,
-                   1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4,                  
-                   1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4};
-  
-  
   //Determine mystery and position
   if (pos - 6 >= 0) {
     int decade = ceil((pos-6)/13);
@@ -139,8 +149,23 @@ void loop() {
 
   String prayer;
   
+  reading = digitalRead(buttonpin);
+
+  // if the input just went from LOW and HIGH and we've waited long enough
+  // to ignore any noise on the circuit, toggle the output pin and remember
+  // the time
+  if (reading == HIGH && previous == LOW && millis() - time > debounce) {
+    if (state == HIGH)
+      state = LOW;
+    else
+      state = HIGH;
+
+    time = millis();    
+  }
+
+  previous = reading;
   
-  if (digitalRead(buttonpin) == LOW) {
+  if (state == LOW) {
       digitalWrite(LED, HIGH);
       beep(1, chaplet[pos]);
       switch (chaplet[pos]) {
@@ -162,8 +187,9 @@ void loop() {
       }
       lcd.print(prayer);
       pos+=1;
-      delay(100); // to prevent multiple reads
+      //delay(100); // to prevent multiple reads, replaced by debouncing
       digitalWrite(LED, LOW);
+      state = HIGH;
   }
   
   if (pos >= sizeof(chaplet)) {
