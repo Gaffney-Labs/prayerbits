@@ -1,5 +1,6 @@
 # prayerbits
-A simple Arduino device to pray chaplets digitally
+A simple Arduino device to pray chaplets digitally, which can be built easily from components included in most starter kits.
+The design is released under the MIT License in the hopes of spurring development of Catholic software and hardware projects, and other edifying endeavors. Also serves as a nice introduction to the basics of the Arduino system.
 
 # Features
 Those in bold have already been implemented:
@@ -7,7 +8,7 @@ Those in bold have already been implemented:
   * **FOSS/H project**
   * **Accessibility**
     * **Different beeps for different prayers, for the blind (improve differentiation)**
-    * Vibration and LED for the deaf orants
+    * Vibration and **LED for the deaf orants** (use RGB LED)
     * Input for quadraplegics
   * Rosary Mysteries
     * Calendar-based
