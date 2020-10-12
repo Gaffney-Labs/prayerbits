@@ -12,22 +12,25 @@ Those in bold have already been implemented:
   * **Accessibility**
     * **Different beeps for different prayers, for the blind (improve differentiation)**
     * Vibration and **LED for the deaf orants** (use RGB LED)
-    * Input for quadraplegics
-  * Scrolling prayer text
-  * Prayer counter (x/10, y/5) or x, y
-    * Due to space limitations, requires implementing scrolling text first  
-  * Settings
-    * Starting prayer
-    * Final prayer
-  * Translations
+    * Input for quadraplegics  
   * Multiple chaplets
     * Chaplet of Divine Mercy
-    * Support for a generic format
-  * Rotary encoder, with "Amen" button
-  * Ending prayers
-  * Power switch, automatic shut-off, and state preservation
-  * Verses
-  * Accessories, 3d-printable case, etc.
+    * Support for a generic format and sort of programmer
+  * Desktop/web connectivity and dashboard  
+  * Hardware Improvements  
+    * Rotary encoder, with "Amen" button when pressed and option to accept swipes as increment/decrement (for aesthetic simplicity)
+    * Power switch, battery charging, automatic shut-off / sleep (should use just microcontroller if have a sleep mode)
+    * State preservation, settings, and statistics (requires some form of memory)
+     * Settings
+      * Starting prayer
+      * Final prayer(s)
+      * Translations
+      * Scrolling prayer text   
+      * Prayer counter none, (x/10, y/5) or x, y
+     * Verses and meditations (requires larger LCD)
+     * Recordings and recitation of recordings (requires microphone and memory)
+     * USB connectivity (largely pointless unless have memory or massive library of options at start)
+     * Accessories, 3d-printable cases, etc.
 
 # Components
 The project can be built with parts included in most Arduino starter kits.
