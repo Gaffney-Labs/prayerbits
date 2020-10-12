@@ -22,15 +22,15 @@ Those in bold have already been implemented:
     * Power switch, battery charging, automatic shut-off / sleep (should use just microcontroller if have a sleep mode)
     * State preservation, settings, and statistics (requires some form of memory)
      * Settings
-      * Starting prayer
-      * Final prayer(s)
-      * Translations
-      * Scrolling prayer text   
-      * Prayer counter none, (x/10, y/5) or x, y
-     * Verses and meditations (requires larger LCD)
-     * Recordings and recitation of recordings (requires microphone and memory)
-     * USB connectivity (largely pointless unless have memory or massive library of options at start)
-     * Accessories, 3d-printable cases, etc.
+       * Starting prayer
+       * Final prayer(s)
+       * Translations
+       * Scrolling prayer text   
+       * Prayer counter none, (x/10, y/5) or x, y
+    * Verses and meditations (requires larger LCD)
+    * Recordings and recitation of recordings (requires microphone and memory)
+    * USB connectivity (largely pointless unless have memory or massive library of options at start)
+    * Accessories, 3d-printable cases, etc.
 
 # Components
 The project can be built with parts included in most Arduino starter kits.
