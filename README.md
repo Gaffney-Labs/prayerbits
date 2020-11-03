@@ -20,7 +20,7 @@ Those in bold have already been implemented:
   * Hardware Improvements  
     * Rotary encoder, with "Amen" button when pressed and option to accept swipes as increment/decrement (for aesthetic simplicity)
     * Power switch, battery charging, automatic shut-off / sleep (should use just microcontroller if have a sleep mode)
-    * State preservation, settings, and statistics (requires some form of memory)
+    * State preservation, settings, and statistics (requires some form of memory, probably EEPROM's enough)
      * Settings
        * Starting prayer
        * Final prayer(s)
@@ -45,8 +45,9 @@ The project can be built with parts included in most Arduino starter kits.
 # Instructions
 You will need the LiquidCrystal Library.
 
-1. Assemble the components according to this breadboard diagram:
+1. Assemble the components according to this breadboard diagram and picture:
 <img src="./PrayerBits%20Breadboard_bb.png">
+<img src="./PrayerBits.jpg">
 Note that you will need to add an extra button, connected to pin 3, to use the version with Mysteries, although you could hypothetically rig up a solution to display each option for x ms instead of having a second button, if you're low on buttons.
 
 2. Open the code in Arduino IDE
